@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  reason: MyText
+  street: MyString
+  suburb: MyString
+  postcode: MyString
+  state: MyString
+  date: 2015-11-26
+  start_time: 2015-11-26 20:35:28
+  end_time: 2015-11-26 20:35:28
+
+two:
+  name: MyString
+  reason: MyText
+  street: MyString
+  suburb: MyString
+  postcode: MyString
+  state: MyString
+  date: 2015-11-26
+  start_time: 2015-11-26 20:35:28
+  end_time: 2015-11-26 20:35:28

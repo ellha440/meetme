@@ -1,0 +1,48 @@
+<%= simple_form_for(@meeting) do |f| %>
+  <%= f.error_notification %>
+
+  <div class = "row">
+    <div class="input-field col m12">
+        <%= f.input :name %>
+    </div>
+    <div class="input-field col m12">
+      <%= f.input :reason, input_html: {class: "materialize-textarea"} %>   
+    </div>
+  </div>
+
+  <div class= "row">
+    <div class="input-field col m6">
+      <%= f.input :street %>
+    </div>
+    <div class="input-field col m6">
+      <%= f.input :suburb %>
+    </div>
+    <div class="input-field col m6">
+       <%= f.input :postcode %>
+    </div>
+    <div class="input-field col m6">
+       <%= f.input :state, label: false, collection: ['NSW', 'ACT', 'VIC', 'WA', 'SA', 'NT', 'TAS', 'QLD'] , input_html: { class: 'browser-default collection-item'}, prompt: 'State'%>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col m12">
+        <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class = "input-field col m6">
+      <%= f.time_select :start_time, as: :string, :value => @meeting.start_time, :default => Time.now, input_html: {class: "timepicker"} %>
+    </div>
+    <div class = "input-field col m6">
+      <%= f.time_select :end_time, :value => @meeting.start_time, :default => Time.now  %>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col m12">
+        <%= f.button :submit %>
+      </div>
+  </div>
+<% end %>
