@@ -46,11 +46,11 @@
 </p>
 
 <p><strong>Tags: </strong></p>
-  <ul>
+  <div class="collection">
     <% @tags.each do |tag| %>
-      <li><%= tag.name %> </li>
+      <%= link_to tag.name, meetings_path(tag: tag.name), class: 'collection-item' %> 
     <% end %>
-  </ul>
+  </div>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>

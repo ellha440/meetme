@@ -4,7 +4,12 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meetings = Meeting.all
+    @tag = params[:tag] 
+    if @tag
+      @meetings = Meeting.tagged_with(@tag)
+    else
+      @meetings = Meeting.all
+    end
   end
 
   # GET /meetings/1
