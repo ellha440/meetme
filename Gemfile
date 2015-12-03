@@ -9,7 +9,7 @@ gem 'simple_form'
 gem 'jquery-timepicker-rails'
 gem 'carrierwave'
 gem 'friendly_id'
-gem 'act-as-taggable-on'
+gem 'acts-as-taggable-on'
 
 
 
