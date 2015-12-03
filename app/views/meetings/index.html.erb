@@ -1,42 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Meetings</h1>
+<h1>Upcoming Meetings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Reason</th>
-      <th>Street</th>
-      <th>Suburb</th>
-      <th>Postcode</th>
-      <th>State</th>
-      <th>Date</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @meetings.each do |meeting| %>
-      <tr>
-        <td><%= link_to meeting.name, meeting %></td>
-        <td><%= meeting.reason %></td>
-        <td><%= meeting.street %></td>
-        <td><%= meeting.suburb %></td>
-        <td><%= meeting.postcode %></td>
-        <td><%= meeting.state %></td>
-        <td><%= meeting.date %></td>
-        <td><%= meeting.start_time %></td>
-        <td><%= meeting.end_time %></td>
-        <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
-        <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class=" row ">
+  <div class=" col m8 ">
+    <ul class=" collection ">
+      <% @meetings.each do |meeting| %>
+        <li class="collection-item avatar">
+          <img src="<%= User.find(meeting.organiser_id).profile.image %>" class="circle">
+          <span class="title"><%= meeting.name %></span>
+          <p><%=meeting.reason %></p>
+          <a href="<%= meeting_path(meeting)%>" class="secondary-content"><i class="material-icons">grade</i></a>
+        </li>
+      <% end %>
+     </ul>
+  </div>
+  <div class="col m4">
+    <div class="collection with-header">
+      <% @tags = Meeting.tag_counts_on(:tags) %>
+      <% @tags.each do |tag| %>
+        <a href="<%= meetings_path(tag: tag.name) %>" class="collection-item"><%=tag.name%>(<%= tag.taggings_count %>)</a>
+      <% end %>
+    </div>
+  </div>
+</div>
 <br>
 
 <%= link_to 'New Meeting', new_meeting_path %>
