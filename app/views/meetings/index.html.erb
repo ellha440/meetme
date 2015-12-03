@@ -19,11 +19,17 @@
     <div class="collection with-header">
       <% @tags = Meeting.tag_counts_on(:tags) %>
       <% @tags.each do |tag| %>
-        <a href="<%= meetings_path(tag: tag.name) %>" class="collection-item"><%=tag.name%>(<%= tag.taggings_count %>)</a>
+        <a href="<%= meetings_path(tag: tag.name) %>" class="collection-item 
+        <%= 'green lighten-4' if tag.name == params[:tag] %>"><%=tag.name%>(<%= tag.taggings_count %>)</a>
       <% end %>
+    </div>
+    <div class="collection">
+      <ul>
+        <li class="collection-item"> <%= link_to 'All meetings', meetings_path %></li>
+        <li class="collection-item"><%= link_to 'Create Meeting', new_meeting_path %> </li>
+      </ul>
     </div>
   </div>
 </div>
 <br>
 
-<%= link_to 'New Meeting', new_meeting_path %>
