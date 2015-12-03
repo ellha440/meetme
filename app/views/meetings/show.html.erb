@@ -45,5 +45,12 @@
   <%= @meeting.end_time %>
 </p>
 
+<p><strong>Tags: </strong></p>
+  <ul>
+    <% @tags.each do |tag| %>
+      <li><%= tag.name %> </li>
+    <% end %>
+  </ul>
+
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
